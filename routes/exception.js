@@ -1,20 +1,20 @@
 var express = require('express');
-const { route } = require('.');
 var router = express.Router();
 const connection = require('../modules/db')
 
+// INSERT 增 post
+// DELETE 删 delete
+// UPDATE 改 put
+// SELECT 查 get
+
+// 新增异常
 router.post('/', (req, res, next) => {
-  connection.query('INSERT INTO name(source,type,file) VALUES(1,2,3)', {}, (err, result) => {
-    console.log('err, result', err, result)
+  connection.query('INSERT INTO ExceptionInfo(source, type, file) VALUES(1, 2, 3)', {}, (err, result) => {
+    console.log('req', req)
+    console.log('err', err)
+    console.log('result', result)
     result.send(112233)
   })
 })
-
-router.get('/getExceptionByUserId', function (req, res, next) {
-  connection.query('SELECT * FROM ExceptionInfo WHERE userId=1', {}, (err, result) => {
-    console.log('err, result', err, result)
-    res.send('445566')
-  })
-});
 
 module.exports = router;
