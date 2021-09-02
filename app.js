@@ -21,10 +21,10 @@ const $_config = require('./public/constants/config.js')
 
 // 配置接口
 const indexRouter = require('./routes/index')
-app.use('/ada-frontend-exception', indexRouter)
+app.use('/', indexRouter)
 // scratch 项目
 var adaSchoolIdeRouter = require('./routes/ada-school-ide.js')
-app.use('/ada-frontend-exception/ada-school-ide', adaSchoolIdeRouter)
+app.use('/ada-school-ide', adaSchoolIdeRouter)
 
 // catch 404 and forward to error handler
 var createError = require('http-errors');
