@@ -5,7 +5,7 @@ module.exports = {
         user: 'root',
         password: 'gfx93728',
         connectTimeout: 30,
-        database: 'ada-school-ide',
+        // database: 'ada-school-ide',
     },
     serverPort: '3001'
 }
