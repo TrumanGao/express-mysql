@@ -11,9 +11,13 @@ app.set('view engine', 'html'); // 设置视图引擎为html
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(logger('dev'));
-app.use(express.json());
+
+// 解析 urlencoded 格式的请求体数据（即 x-www-form-urlencoded 格式："name=zs&age=20"。如浏览器form提交）
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+// 解析 JSON 格式的请求体数据（即 application/json 格式：对象或数组）
+app.use(express.json());
+
+// 托管静态资源
 app.use(express.static(path.join(__dirname, 'public')));
 
 const $_utils = require('./public/utils/index.js')

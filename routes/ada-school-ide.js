@@ -9,11 +9,20 @@ const connection = require('../modules/ada-school-ide')
 
 // 新增异常
 router.post('/', (req, res, next) => {
-  connection.query('INSERT INTO exception(workId, userId, tenantId ) VALUES(1, 2, 3)', {}, (err, result) => {
-    console.log('请求', req)
+
+  bodyFormat = {
+    ...req.body,
+    timestamp: new Date().getTime()
+  }
+
+  let keysStr = Object.keys(bodyFormat).join()
+  let valsStr = Object.values(bodyFormat).join()
+  let sqlStr = `INSERT INTO exception(${keysStr}) VALUES(${valsStr})`
+  console.log('sqlStr', sqlStr)
+
+  connection.query(sqlStr, {}, (err, result) => {
     console.log('响应', res)
     console.log('错误', err)
-    console.log('结果', result)
     res.send(result)
   })
 })
